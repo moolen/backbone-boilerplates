@@ -1,161 +1,72 @@
-#Backbone Boilerplates
+# TodoMVC
 
-Developers have been reqesting examples of how to integrate Backbone.js with a number of different backend technology stacks. To help with this, you can find many of these integration examples in this repository, with their stacks listed below. There are more to come soon and I'm always happy to consider other stacks not already covered.
+#### A common demo application for popular JavaScript MV* frameworks
 
-Option 1
-=========
-* Node.js
-* Express
-* Mongoose
-* MongoDB
+## Introduction
 
-Option 2
-=========
-* Jade
-* Node.js
-* Express
-* Mongoose
-* MongoDB
+This demo was written to illustrate how a server-side JavaScript solution could be applied to the TodosMVC application using sockets.
 
-Option 3
-==========
-* Haml
-* Ruby
-* Sinatra
-* MongoDB
+#### Technologies Used In This Demo
 
-Option 4
-==========
-* Grails
-* MongoDB
+- [Underscore.js](http://documentcloud.github.com/underscore/) - A utility-belt library for JavaScript without extending any of the built-in JavaScript objects.
+- [Backbone.js](http://documentcloud.github.com/backbone/) - Gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface.
+- [backbone.iobind](https://github.com/logicalparadox/backbone.iobind) - Bind socket.io events to backbone models & collections. Also includes a drop-in replacement for Backbone.sync using socket.io.
+- [jQuery](http://jquery.com/) - A fast, concise, library that simplifies how to traverse HTML documents, handle events, perform animations, and add AJAX.
+- [Node.js](http://nodejs.org/) - Event-driven I/O server-side JavaScript environment based on V8.
+- [Express](http://expressjs.com/) - High performance, high class web development for node.js.
+- [Jade](http://jade-lang.com/) - High performance template engine heavily influenced by Haml and implemented with JavaScript for node.js.
+- [Stylus](http://learnboost.github.com/stylus/) - Expressive, dynamic, robust CSS for node.js
+- [Socket.io](http://socket.io/) - Aims to make realtime apps possible in every browser and mobile device, blurring the differences between the different transport mechanisms. It's care-free realtime 100% in JavaScript.
+- [Mongoose](http://mongoosejs.com/) - A MongoDB object modeling tool designed to work in an asynchronous environment.
+- [MongoDB](http://www.mongodb.org/) - A scalable, high-performance, open source NoSQL database.
+- [Redis](http://redis.io/) - an open source, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.
 
-(thanks to [Lauri Piispanen](https://github.com/lauripiispanen))
+## Getting the Demo
 
-Option 5
-==========
-* PHP 
-* Slim PHP RESTful framework
-* mySQL
-
-(thanks to [Joshua Stauter](https://github.com/dthtvwls))
-
-Option 6
-==========
-* Rails / Rails Asset Pipeline
-* CoffeeScript
-* Rails JSON API
-
-(also thanks to [Joshua Stauter](https://github.com/dthtvwls))
-
-Option 7
-==========
-* Jade
-* Stylus
-* Node.js
-* Express
-* Mongoose
-* MongoDB
-* Socket.io
-* Redis
-
-Redis is used to manage sessions and locks using pub/sub to notify clients of any changes.  Socket.io is used to make these notifications as quickly as possible.
-
-(contributed by [James O'Reilly](https://github.com/jamesor))
-
-Option 8
-==========
-* Vert.x
-* MongoDB
-
-(contributed by [Yuichi Ohneda](https://github.com/ohneda))
-
-
-##Instructions
-
-All boilerplates are based on the excellent [HTML5 Boilerplate](http://html5boilerplate.com/) and use a MongoDB backend. 
-
-Please ensure you have [MongoDB](http://www.mongodb.org/downloads) installed and running prior to running any of the boilerplates.
-
-###MongoDB Setup 
-
-Once you've downloaded MongoDB, you'll need to complete two steps to get things up and running.
-
-**Data directories**
-
-MongoDB stores data in the bin/data/db folder but won't actually create this directory for you. Navigate to where you've downloaded and extracted Mongo and run the following from terminal:
-
+1. Fork this repo by clicking the "Fork" button above
+2. Clone your fork to make a local working copy.  For example:
 <pre>
-sudo mkdir -p /data/db/
-sudo chown `id -u` /data/db
+$ git clone git@github.com:[your_github_username]/backbone-boilerplates.git
+$ cd backbone-boilerplates/option7_node_socketio
 </pre>
 
-**Running and connecting to your server**
+## Setting up Dependencies
 
-Once this is done, open up two terminal windows. 
-
-In the first, <code>cd</code> to your MongoDB bin directory or type in the complete path to it. You'll need to start mongod.
-
+1. Install [node.js](http://nodejs.org/#download).
+2. Install [MongoDB](http://www.mongodb.org/downloads).
+3. Start the MongoDB server from a terminal window:
 <pre>
-$ ./bin/mongod
+$ mongod
+</pre>
+4. Install [Redis](http://redis.io/download).
+5. Start the Redis Server from another terminal window:
+<pre>
+$ redis-server
+</pre>
+6. Make sure your current directory is option7_node_socketio before step 7.
+<pre>
+$ pwd
+[your repos path]/backbone-boilerplates/option7_node_socketio
+</pre>
+7. Install dependencies using the node package manger (npm).
+<pre>
+$ sudo npm link
 </pre>
 
-Next, in the second terminal, start the mongo shell which will connect up to localhost by default.
+## Running the Demo
 
+1. Start the Todos demo server from a different terminal window:
 <pre>
-$ ./bin/mongo
+$ node app
 </pre>
+2. Visit [http://localhost:3000](http://localhost:3000) in a web browser.
 
-That's it!.
+## Credit
 
-###Options 1 and 2
+- [Jérôme Gravel-Niquet](http://jgn.me/) - Created original demo
+- [Addy Osmani](http://addyosmani.com/) - Cleanup, edits
+- [James O'Reilly](http://jamesor.com/) - Added server-side tech from node.js to MongoDB.
 
-The only main difference between Options 1 and 2 is that Option 2 uses [Jade](http://jade-lang.com/) (the Node templating engine) whilst Option 1 allows you to use regular HTML for your layouts. Both run on Node.js with Express and Mongoose.
+## License
 
-To get either option running:
-
-* Make sure you have Node.js installed. If not, grab it [here](http://nodejs.org/#download)
-* Next, fire up a terminal and run the following lines
-   
-<pre>
-git clone https://github.com/addyosmani/backbone-boilerplates.git
-cd option1
-./install.sh
-node app.js
-</pre>
-
-Similarly for option2, simply cd into option2 and run <code>node app.js</code> from there.
-
-Next, navigate to one of the following URLs:
-
-* Option 1: <code>http://localhost:3000/static.html</code>
-* Option 2: <code>http://localhost:3000/todo</code>
-
-**Note:** The Jade layout files for Option 2 can be found in the /views folder.
-
-### Option 3
-
-This option uses Ruby, Sinatra and Haml and requires that you have at minimum Ruby and bundler installed as a prerequsite.
-
-<pre>
-git clone https://github.com/addyosmani/backbone-boilerplates.git
-cd option3
-bundle install
-ruby app.rb
-</pre>
-
-Finally, navigate to <code>http://localhost:4567/todo</code>
-
-**Note:** The Haml layout files for Option 3 can be found in the /views folder.
-
-
-##Thanks and future plans
-
-I would like to extend my thanks to [Chris Riccomini](https://github.com/criccomini) for his [Weapon of Choice](https://github.com/criccomini) project. It served as the inspiration and a partial base for this repo, which I plan on expanding to cover other setups such as Backbone + Socket.io, Backbone + SocketStream and more.
-
-Backbone Boilerplates is a project that was created to stub further examples for my creative-commons book [Backbone Fundamentals](https://github.com/addyosmani/backbone-fundamentals). The idea is to create further applications for the yet to be written RESTful/backend sections of the book, which have been repeatedly requested on the issue tracker. 
-
-If you notice any major issues, please let me know about them and I'll do my best to fix them up right away.
-
-
-
-
+Public Domain
